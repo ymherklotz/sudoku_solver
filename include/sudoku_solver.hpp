@@ -33,10 +33,13 @@ public:
     SudokuSolver();
     ~SudokuSolver();
 
-    void printGrid();
+    void printGrid(std::vector<int> &grid);
+    void initGrid(std::vector<int> &new_grid);
     bool checkBox(unsigned int &grid_location, std::vector<int> &curr_grid);
     bool checkRow(unsigned int &grid_location, std::vector<int> &curr_grid);
     bool checkColumn(unsigned int &grid_location, std::vector<int> &curr_grid);
+    bool emptyLocation(unsigned int &curr_location);
+    bool isValid(unsigned int &grid_location, std::vector<int> &curr_grid);
     int getBox(unsigned int grid_location);
 protected:
 private:

@@ -22,7 +22,7 @@ SudokuSolver::~SudokuSolver() {
     
 }
 
-void SudokuSolver::printGrid() {
+void SudokuSolver::printGrid(vector<int> &grid) {
     int count = 0;
     int row = 0;
     int sep_count = 0;
@@ -50,6 +50,10 @@ void SudokuSolver::printGrid() {
             ++sep_count;
         }
     }
+}
+
+void SudokuSolver::initGrid(std::vector<int> &new_grid) {
+    new_grid = this->grid;
 }
 
 bool SudokuSolver::checkBox(unsigned int &grid_location, vector<int> &curr_grid) {
@@ -94,6 +98,22 @@ bool SudokuSolver::checkColumn(unsigned int &grid_location, vector<int> &curr_gr
     }
 
     return true;
+}
+
+bool SudokuSolver::emptyLocation(unsigned int &curr_location) {
+    if(grid[curr_location] == 0) {
+        return true;
+    }
+
+    return false;
+}
+
+bool SudokuSolver::isValid(unsigned int &grid_location, std::vector<int> &curr_grid) {
+    if(checkColumn(grid_location, curr_grid) && checkRow(grid_location, curr_grid) && checkBox(grid_location, curr_grid)) {
+        return true;
+    }
+
+    return false;
 }
 
 int SudokuSolver::getBox(unsigned int grid_location) {
